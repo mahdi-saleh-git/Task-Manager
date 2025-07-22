@@ -8,10 +8,12 @@
         <div>{{ session('success') }}</div>
     @endif
 
-    <a href="{{ route('tasks.create') }}">+ Add New Task</a>
+    <div class="py-2.5">
+        <a class="text-white bg-blue-500 rounded-lg px-5 py-2.5 " href="{{ route('tasks.create') }}">+ Add New Task</a>
+    </div>
 
     @if($tasks->isEmpty())
-        <p>No tasks found.</p>
+        <p class="text-red-700 italic">No tasks found</p>
     @else
         <table>
             <thead>
@@ -34,22 +36,22 @@
                             <span>Pending</span>
                         @endif
                     </td>
-                    {{-- <td>
+                    <td>
                         <form action="{{ route('tasks.toggle', $task->id) }}" method="POST" style="display:inline-block">
                             @csrf
-                            <button class="btn btn-sm btn-secondary">
+                            <button>
                                 {{ $task->is_done ? 'Mark as Pending' : 'Mark as Done' }}
                             </button>
                         </form>
 
-                        <a href="{{ route('tasks.edit', $task->id) }}" class="btn btn-sm btn-info">Edit</a>
+                        <a href="{{ route('tasks.edit', $task->id) }}">Edit</a>
 
                         <form action="{{ route('tasks.destroy', $task->id) }}" method="POST" style="display:inline-block">
                             @csrf
                             @method('DELETE')
-                            <button class="btn btn-sm btn-danger" onclick="return confirm('Delete this task?')">Delete</button>
+                            <button onclick="return confirm('Delete this task?')">Delete</button>
                         </form>
-                    </td> --}}
+                    </td>
                 </tr>
                 @endforeach
             </tbody>
